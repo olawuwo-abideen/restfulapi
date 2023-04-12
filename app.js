@@ -22,6 +22,9 @@ const articleSchema = {
   
   const Article = mongoose.model("Article", articleSchema);
 
+
+// For All Articles  
+
 app.route("/articles")
 
 .get(function(req, res){
@@ -49,6 +52,18 @@ app.route("/articles")
       }
     });
   })
+
+  .delete(function(req, res){
+
+    Article.deleteMany(function(err){
+      if (!err){
+        res.send("Successfully deleted all articles.");
+      } else {
+        res.send(err);
+      }
+    });
+  });
+  
  
 
 app.listen(3000, function() {
