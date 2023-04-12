@@ -33,6 +33,22 @@ app.route("/articles")
     }
   });
 })
+
+.post(function(req, res){
+
+    const newArticle = new Article({
+      title: req.body.headline,
+      content: req.body.content
+    });
+  
+    newArticle.save(function(err){
+      if (!err){
+        res.send("Successfully added a new article.");
+      } else {
+        res.send(err);
+      }
+    });
+  })
  
 
 app.listen(3000, function() {
