@@ -15,12 +15,12 @@ app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost:27017/newsDB");
 
-const articleSchema = {
+const newsSchema = {
   headline: String,
   content: String
 };
 
-const Article = mongoose.model("Article", articleSchema);
+const News = mongoose.model("News", articleSchema);
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
